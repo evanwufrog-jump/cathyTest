@@ -1,0 +1,23 @@
+server:
+  port: 8089 # 伺服器的port號
+#  http://localhost:9100/h2-console/
+spring:
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:currencyname # h2 database 連接位址
+    driver-class-name: org.h2.Driver # 配置driver
+    username: sa # database用戶名
+    password:  # database 密碼
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    #使得JPA僅驗證資料庫格式，不自動刪除舊有表格
+    hibernate:
+      ddl-auto: validate
+  #生成資料表
+  sql:
+    init:
+      data-locations: classpath:data.sql
